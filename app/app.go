@@ -20,10 +20,9 @@ type App struct {
 func (a *App) Initialize(config *config.Config) {
 	dbURI := fmt.Sprintf("%s:%s@/%s?charset=%s&parseTime=True",
 		config.DB.Username,
-		config.DB.Passport,
+		config.DB.Password,
 		config.DB.Name,
-		config.DB.Charset
-	)
+		config.DB.Charset)
 
 	db, err := gorm.Open(config.DB.Dialect, dbURI)
 	if err != nil {

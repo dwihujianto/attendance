@@ -7,8 +7,8 @@ import (
 
 type Employee struct {
 	gorm.Model
-	Name   string `gorm:"unique" json:"name"`
-	City   string `json:"city"`
+	Name   string `gorm:"type:varchar(191);unique" json:"name"`
+	City   string `gorm:"type:varchar(191)" json:"city"`
 	Age    int    `json:"age"`
 	Status bool   `json:"status"`
 }
@@ -17,7 +17,7 @@ func (e *Employee) Disable() {
 	e.Status = false
 }
 
-func (e *Employee) Disable() {
+func (e *Employee) Enable() {
 	e.Status = true
 }
 

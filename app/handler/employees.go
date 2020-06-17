@@ -1,15 +1,15 @@
 package handler
 
 import (
-	"encoding/json"
+	//"encoding/json"
 	"net/http"
 
 	"api/app/model"
-	"github.com/gorilla/mux"
+	//"github.com/gorilla/mux"
 	"github.com/jinzhu/gorm"
 )
 
-func getAllEmployees(db *gorm.DB, w http.ResponseWriter, r *http.Request) {
+func GetAllEmployees(db *gorm.DB, w http.ResponseWriter, r *http.Request) {
 	employees := []model.Employee{}
 	db.Find(&employees)
 
