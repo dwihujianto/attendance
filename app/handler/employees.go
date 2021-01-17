@@ -4,7 +4,7 @@ import (
 	//"encoding/json"
 	"net/http"
 
-	"api/app/model"
+	"github.com/dwihujianto/attendance/app/model"
 	//"github.com/gorilla/mux"
 	"github.com/jinzhu/gorm"
 )
