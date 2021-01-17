@@ -1,51 +1,27 @@
 package app
 
 import (
-	"fmt"
-	"log"
-	"net/http"
-
 	"github.com/dwihujianto/attendance/app/handler"
 	"github.com/dwihujianto/attendance/app/model"
 	"github.com/dwihujianto/attendance/config"
-	"github.com/gorilla/mux"
-	"github.com/jinzhu/gorm"
+	"github.com/gin-gonic/gin"
 )
 
 type App struct {
-	Router *mux.Router
-	DB *gorm.DB
+	Router *gin.Engine
 }
 
 func (a *App) Initialize(config *config.Config) {
-	dbURI := fmt.Sprintf("%s:%s@/%s?charset=%s&parseTime=True",
-		config.DB.Username,
-		config.DB.Password,
-		config.DB.Name,
-		config.DB.Charset)
-
-	db, err := gorm.Open(config.DB.Dialect, dbURI)
-	if err != nil {
-		log.Fatal("Could not connect database")
-	}
-
-	a.DB = model.DBMigrate(db)
-	a.Router = mux.NewRouter()
+	model.DBInit(config)
+	r := gin.Default()
+	a.Router = r
 	a.setRouters()
 }
 
 func (a *App) setRouters() {
-	a.Get("/employees", a.GetAllEmployees)
-}
-
-func (a *App) Get(path string, f func(w http.ResponseWriter, r *http.Request)) {
-	a.Router.HandleFunc(path, f).Methods("GET")
-}
-
-func (a *App) GetAllEmployees(w http.ResponseWriter, r *http.Request) {
-	handler.GetAllEmployees(a.DB, w, r)
+	a.Router.GET("/employees", handler.GetAllEmployees)
 }
 
 func (a *App) Run(host string) {
-	log.Fatal(http.ListenAndServe(host, a.Router))
+	a.Router.Run(host)
 }

@@ -5,21 +5,23 @@ type Config struct {
 }
 
 type DBConfig struct {
-	Dialect string
+	Dialect  string
+	Host     string
 	Username string
 	Password string
-	Name string
-	Charset string
+	Name     string
+	Charset  string
 }
 
 func GetConfig() *Config {
 	return &Config{
 		DB: &DBConfig{
-			Dialect: "mysql",
+			Dialect:  "mysql",
+			Host:     "localhost",
 			Username: "admin",
 			Password: "tonjootonjoo",
-			Name:"go_rest",
-			Charset:"utf8",
+			Name:     "go_rest",
+			Charset:  "utf8mb4",
 		},
 	}
 }

@@ -2,7 +2,6 @@ package model
 
 import (
 	"github.com/jinzhu/gorm"
-	_ "github.com/jinzhu/gorm/dialects/mysql"
 )
 
 type Employee struct {
@@ -19,9 +18,4 @@ func (e *Employee) Disable() {
 
 func (e *Employee) Enable() {
 	e.Status = true
-}
-
-func DBMigrate(db *gorm.DB) *gorm.DB {
-	db.AutoMigrate(&Employee{})
-	return db
 }
