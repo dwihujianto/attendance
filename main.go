@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/dwihujianto/attendance/app"
-	"github.com/dwihujianto/attendance/config"
+	"attendance/app"
+	"attendance/config"
 )
 
 func main() {

@@ -3,7 +3,7 @@ package employee
 import (
 	"net/http"
 
-	"github.com/dwihujianto/attendance/app/model"
+	"attendance/app/model"
 	"github.com/gin-gonic/gin"
 )
 

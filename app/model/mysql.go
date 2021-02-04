@@ -3,7 +3,7 @@ package model
 import (
 	"fmt"
 
-	"github.com/dwihujianto/attendance/config"
+	"attendance/config"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -25,6 +25,7 @@ func DBInit(config *config.Config) {
 	}
 
 	db.AutoMigrate(&Employee{})
+	db.AutoMigrate(&Presence{})
 
 	DB = db
 }

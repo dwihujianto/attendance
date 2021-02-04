@@ -1,9 +1,11 @@
 package app
 
 import (
-	"github.com/dwihujianto/attendance/app/handler/employee"
-	"github.com/dwihujianto/attendance/app/model"
-	"github.com/dwihujianto/attendance/config"
+	"attendance/app/handler/employee"
+	"attendance/app/handler/presence"
+
+	"attendance/app/model"
+	"attendance/config"
 	"github.com/gin-gonic/gin"
 )
 
@@ -23,6 +25,8 @@ func (a *App) setRouters() {
 
 	api.GET("/employees", employee.GetAll)
 	api.GET("/employees/:id", employee.GetById)
+
+	api.GET("/presence", presence.GetAll)
 }
 
 func (a *App) Run(host string) {
