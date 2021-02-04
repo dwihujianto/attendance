@@ -24,6 +24,7 @@ func (a *App) setRouters() {
 	api := a.Router.Group("api")
 
 	api.GET("/employees", employee.GetAll)
+	api.POST("/employees", employee.CreateNew)
 	api.GET("/employees/:id", employee.GetById)
 
 	api.GET("/presence", presence.GetAll)
